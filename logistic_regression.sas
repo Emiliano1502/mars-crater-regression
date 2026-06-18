@@ -7,12 +7,12 @@ data work.mars_logistic;
     else deep_crater = 0;
 run;
 
-/* Revisar frecuencia de la variable respuesta */
+/* For response variable frequency */
 proc freq data=work.mars_logistic;
     tables deep_crater;
 run;
 
-/* Modelo simple: solo la variable explicativa principal */
+/* For the unadjusted model */
 proc logistic data=work.mars_logistic;
     model deep_crater(event='1') = diam_centered / clodds=wald;
     title "Logistic Regression Model 1: Diameter Only";
